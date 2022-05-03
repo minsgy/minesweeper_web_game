@@ -4,7 +4,7 @@ import { RootState } from '@store';
 import { useSelector, useDispatch } from 'react-redux';
 import { control } from '@modules/control';
 import { CELL_FLAG, STATUS } from '@lib/constants';
-import { createArray } from '@lib/create';
+import { createArray } from '@lib/creater';
 import Cell from '@components/Cell';
 
 const Board = () => {
