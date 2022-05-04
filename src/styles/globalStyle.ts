@@ -11,6 +11,11 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+    a, a:hover, a:active, a:visited {
+        text-decoration: none;
+        color: inherit;
+    }
 `;
 
 export default GlobalStyle;
