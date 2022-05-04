@@ -9,14 +9,14 @@ export const STATUS = {
   RUN: 'run',
   WIN: 'win',
   LOSE: 'lose',
-};
+} as const;
 
 export const CELL_FLAG = {
   OPEN: 0,
   NOTHING: -1,
   FLAG: -2,
-  QUESTION: -3,
-  MINE: -4,
-  MINE_FLAG: -5,
-  MINE_QUESTION: -6,
+  MINE: -3,
+  MINE_FLAG: -4,
 } as const;
+
+export const MINE_SWEEPER_RANK = 'minesweeper-rank' as const;
