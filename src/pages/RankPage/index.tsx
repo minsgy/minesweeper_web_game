@@ -1,18 +1,20 @@
-import Board from '~components/Board';
-import Status from '~components/Status';
+import RankList from '~components/RankList';
 import Header from '~components/common/Header';
 import Layout from '~layouts';
-const MainPage = () => {
+import { Link } from 'react-router-dom';
+
+const RankPage = () => {
   const HeaderConfig = {
+    leftContent: <Link to="/">메인으로</Link>,
     centerContent: <div>Minsgy MineSweeper</div>,
   };
+
   return (
     <Layout>
       <Header {...HeaderConfig} />
-      <Status />
-      <Board />
+      <RankList />
     </Layout>
   );
 };
 
-export default MainPage;
+export default RankPage;
