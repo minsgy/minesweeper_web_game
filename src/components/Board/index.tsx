@@ -1,4 +1,4 @@
-import { useCallback, useMemo, memo, useEffect } from 'react';
+import { useCallback, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Wrapper } from './style';
 import { RootState } from '~store';
@@ -117,4 +117,4 @@ const Board = () => {
   );
 };
 
-export default memo(Board);
+export default Board;

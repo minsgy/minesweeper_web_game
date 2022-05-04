@@ -64,7 +64,7 @@ export const getFlagCount = (cell: number) => {
   }
 };
 
-// @NOTE :
+// @NOTE : 오픈 셀 클릭 이벤트 함수
 export const openCell = (board: number[][], row: number, col: number) => {
   let openCellCount = 0;
 
@@ -104,30 +104,30 @@ export const openCell = (board: number[][], row: number, col: number) => {
     board[col][row] = getMineCount(row, col);
     openCellCount++;
 
-    let stack: any[] = [];
+    let boardData: any[] = [];
 
     // 탐색 중인 셀 상단 3개
-    stack = board[col - 1]
-      ? stack.concat(
+    boardData = board[col - 1]
+      ? boardData.concat(
           { row: row - 1, col: col - 1 },
           { row, col: col - 1 },
           { row: row + 1, col: col - 1 },
         )
-      : stack;
+      : boardData;
     // 탐색 중인 셀 양 옆 2개
-    stack = stack.concat({ row: row - 1, col }, { row: row + 1, col });
+    boardData = boardData.concat({ row: row - 1, col }, { row: row + 1, col });
     // 탐색 중인 셀 하단 3개
-    stack = board[col + 1]
-      ? stack.concat(
+    boardData = board[col + 1]
+      ? boardData.concat(
           { row: row - 1, col: col + 1 },
           { row, col: col + 1 },
           { row: row + 1, col: col + 1 },
         )
-      : stack;
+      : boardData;
 
     // @NOTE: 주변 셀이 모두 열려있으면, DFS방식의 탐색
     if (board[col][row] === CELL_FLAG.OPEN) {
-      stack.forEach((cell) => {
+      boardData.forEach((cell) => {
         boardSearchExplorer(cell.row, cell.col);
       });
     }
