@@ -8,7 +8,7 @@
 
 ## 프로젝트 실행 및 배포 URL
 
-해당 [링크]()를 통해 DEMO 확인이 가능합니다.
+해당 [링크](https://minsgy-mine-sweeper.netlify.app/)를 통해 DEMO 확인이 가능합니다.
 
 ```text
   npm install
