@@ -20,17 +20,19 @@ const Board = () => {
   const board = useSelector((state: RootState) => state.control.board);
   const status = useSelector((state: RootState) => state.control.status);
 
-  // @NOTE: 페이지 접속 시 board 쵝화
-  useEffect(() => {
-    dispatch(startGame());
-  }, []);
-
   // @NOTE : 게임 시작 시 초기화
   useEffect(() => {
     if (status === STATUS.WIN) {
-      setRankList([...rankList, { name: '아무개', score: timer }]);
+      setRankList([...rankList, { score: timer }]);
     }
   }, [status]);
+
+  // @NOTE: 페이지 접속 시 board 초기화
+  useEffect(() => {
+    return () => {
+      dispatch(startGame()); // useEffect의 실행 순서로 인한 에러 방지
+    };
+  }, []);
 
   // @NOTE: Cell 오른쪽 마우스 클릭 이벤트
   const onRightClickCell = useCallback(
