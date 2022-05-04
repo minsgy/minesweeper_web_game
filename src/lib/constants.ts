@@ -2,7 +2,7 @@ export const CELL_SIZE = 42 as const;
 export const CELL_MARGIN = 2 as const;
 
 export const BOARD_SIZE = 8 as const;
-export const BOARD_MINE_COUNT = 6 as const;
+export const BOARD_MINE_COUNT = 4 as const;
 
 export const STATUS = {
   READY: 'ready',
