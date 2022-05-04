@@ -1,12 +1,10 @@
 import Button from '~components/common/Button';
 import styled from 'styled-components';
-const Wrapper = styled.header`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-
-const TitleText = styled.h1``;
 
 const MineCount = styled.div`
   font-size: 16px;
@@ -16,7 +14,10 @@ const MineCount = styled.div`
   }
 `;
 
-const ButtonWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  text-align: center;
+  flex: 1;
+`;
 
 const StyledButton = styled(Button)`
   cursor: pointer;
@@ -24,22 +25,23 @@ const StyledButton = styled(Button)`
   font-weight: bold;
   padding: 8px 12px;
   background-color: white;
-
-  &:hover {
-    background-color: #f1c40f;
-  }
+  border: 2px solid black;
 
   &#restart {
     background-color: #f1c40f;
+    margin-right: 8px;
   }
 `;
 
 const Timer = styled.div`
-  text-align: right;
   strong {
     font-size: 20px;
     font-weight: bold;
   }
+
+  & + & {
+    margin-left: 8px;
+  }
 `;
 
-export { Wrapper, TitleText, MineCount, ButtonWrapper, StyledButton, Timer };
+export { Wrapper, MineCount, ButtonWrapper, StyledButton, Timer };
