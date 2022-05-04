@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { CELL_SIZE, CELL_FLAG, CELL_MARGIN } from '@lib/constants';
-import Button from '@components/common/Button';
+import { CELL_SIZE, CELL_FLAG, CELL_MARGIN } from '~lib/constants';
+import Button from '~components/common/Button';
 
 const CellButton = styled(Button)<{ cellData: number }>`
   display: flex;
@@ -10,11 +10,11 @@ const CellButton = styled(Button)<{ cellData: number }>`
   font-size: 18px;
   width: ${CELL_SIZE}px;
   height: ${CELL_SIZE}px;
-  cursor: pointer;
   margin: ${CELL_MARGIN}px;
   border: 2px solid #666;
   font-family: consolas, monospace;
-  color: black;
+
+  /* 타입 별 배경 컬러 변경 */
   background-color: ${({ cellData }) => {
     switch (cellData) {
       case CELL_FLAG.NOTHING:
@@ -22,15 +22,13 @@ const CellButton = styled(Button)<{ cellData: number }>`
         return '#FFF';
       case CELL_FLAG.FLAG:
       case CELL_FLAG.MINE_FLAG:
-        return '#F1C40F';
-      case CELL_FLAG.QUESTION:
-      case CELL_FLAG.MINE_QUESTION:
-        return '#44D580';
+        return '#95E0C8';
       default:
-        return '#DDD';
+        return '#F4D74F';
     }
   }};
 
+  /* 숫자 별 글씨 색 변경 */
   color: ${({ cellData }) => {
     switch (cellData) {
       case 1:
@@ -41,14 +39,6 @@ const CellButton = styled(Button)<{ cellData: number }>`
         return '#FB0B0D';
       case 4:
         return '#223DAA';
-      case 5:
-        return '#D35400';
-      case 6:
-        return '#8E44AD';
-      case 7:
-        return '#904323';
-      case 8:
-        return '#FC427B';
       default:
         return 'black';
     }

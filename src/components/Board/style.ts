@@ -1,4 +1,4 @@
-import { CELL_MARGIN, CELL_SIZE } from '@lib/constants';
+import { CELL_MARGIN, CELL_SIZE } from '~lib/constants';
 import styled from 'styled-components';
 
 const Wrapper = styled.div<{ boardSize: number }>`
