@@ -21,4 +21,9 @@ const StyledText = styled.span`
   }
 `;
 
-export { ListWrapper, ListItem, StyledText };
+const NoticeText = styled.li`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export { ListWrapper, ListItem, StyledText, NoticeText };
