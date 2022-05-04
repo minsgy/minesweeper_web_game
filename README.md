@@ -139,7 +139,8 @@
    };
    ```
 
-   ![image](https://user-images.githubusercontent.com/60251579/166493212-3b0f84d1-f489-464c-b7cc-8e322a134f9f.png)
+   ![image](https://user-images.githubusercontent.com/60251579/166803835-da37547e-2aa6-4505-8a16-965ab5d342e0.png)
+
 
 3. Cell FLAG 정의
 
