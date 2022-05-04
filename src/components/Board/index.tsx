@@ -1,21 +1,36 @@
-import { useCallback, useMemo, memo } from 'react';
-import { Wrapper } from './style';
-import { RootState } from '@store';
+import { useCallback, useMemo, memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { control } from '@modules/control';
-import { CELL_FLAG, STATUS } from '@lib/constants';
-import { createArray } from '@lib/creater';
-import Cell from '@components/Cell';
+import { Wrapper } from './style';
+import { RootState } from '~store';
+import { control } from '~modules/control';
+import { CELL_FLAG, MINE_SWEEPER_RANK, STATUS } from '~lib/constants';
+import { createArray } from '~lib/creater';
+import { useLocalStorage } from '~hooks';
+import Cell from '~components/Cell';
 
 const Board = () => {
   const dispatch = useDispatch();
-  const { openCell, changeFlagState } = control.actions;
+  const { startGame, openCell, changeFlagState } = control.actions;
+  const [rankList, setRankList] = useLocalStorage(MINE_SWEEPER_RANK, []);
 
   // @NOTE : useSelector 렌더링 최적화를 위해 따로 선언
   const width = useSelector((state: RootState) => state.control.width);
   const height = useSelector((state: RootState) => state.control.height);
+  const timer = useSelector((state: RootState) => state.control.timer);
   const board = useSelector((state: RootState) => state.control.board);
   const status = useSelector((state: RootState) => state.control.status);
+
+  // @NOTE: 페이지 접속 시 board 쵝화
+  useEffect(() => {
+    dispatch(startGame());
+  }, []);
+
+  // @NOTE : 게임 시작 시 초기화
+  useEffect(() => {
+    if (status === STATUS.WIN) {
+      setRankList([...rankList, { name: '아무개', score: timer }]);
+    }
+  }, [status]);
 
   // @NOTE: Cell 오른쪽 마우스 클릭 이벤트
   const onRightClickCell = useCallback(
@@ -59,18 +74,6 @@ const Board = () => {
               return '💣';
             default:
               return '🚩';
-          }
-        // @NOTE: 플래그 취소 후 Question 상태일 때,
-        case CELL_FLAG.QUESTION:
-          return '❔';
-        case CELL_FLAG.MINE_QUESTION:
-          switch (status) {
-            case STATUS.WIN:
-              return '🎉';
-            case STATUS.LOSE:
-              return '💣';
-            default:
-              return '❔';
           }
         // @NOTE: 지뢰 상태일 때,
         case CELL_FLAG.MINE:
