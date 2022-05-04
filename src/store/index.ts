@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { control } from './control';
-// import { composeWithDevTools } from 'redux-devtools-extension';
+import { control } from './modules/control';
 
 const combinedReducer = combineReducers({
-  // reducers go here
   control: control.reducer,
 });
 
